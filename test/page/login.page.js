@@ -1,18 +1,14 @@
 class LoginPage {
-    //
-    // Locators
-    //
-
     get buttonLoginHomepage() {
-        return $("Masuk Sekarang")
+        return $('//android.widget.Button[@content-desc="Masuk Sekarang"]')
     }
 
     get approveLocation() {
-        return $("id=resource-id/permission_allow_button")
+        return $('/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.Button[2]')
     }
 
     get approvePicture() {
-        return $("id=resource-id/permission_allow_button")
+        return $('/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.Button[2]')
     }
 
     get inputUsername() {
@@ -28,22 +24,27 @@ class LoginPage {
     }
 
     get welcomePage() {
-        return $('//android.view.View[@content-desc="Halo, Selamat Datang! 👋"]')
+        return $('/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.widget.ImageView')
     }
   
-    //
-    // Action methods
-    //
+    async clickWelcomeButton() {
+        await this.buttonLoginHomepage.click()
+        await this.approveLocation.click()
+        await this.approvePicture.click()
+    }
+
     async ensureInLoginPage() {
-      const loginScreen = this.welcomePage;
-  
-      await expect(loginScreen).toBeDisplayed();
+        const loginScreen = this.welcomePage;
+    
+        await expect(loginScreen).toBeDisplayed();
     }
   
-    async login(email, password) {
-      await this.inputUsername.setValue(email);
-      await this.inputPassword.setValue(password);
-      await this.buttonLogin.click();
+    async loginAction(email, password) {
+        await this.inputUsername.click();
+        await this.inputUsername.setValue(email);
+        await this.inputPassword.click();
+        await this.inputPassword.setValue(password);
+        await this.buttonLogin.click();
     }
   }
   
