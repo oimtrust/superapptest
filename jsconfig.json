@@ -1,9 +1,9 @@
 {
-    "compilerOptions": {
-        "types": [
-            "node",
-            "@wdio/sync",
-            "@wdio/mocha-framework"
-        ]
-    }
+  "compilerOptions": {
+    "types": [
+      "node",
+      "webdriverio/async",
+      "@wdio/mocha-framework"
+    ]
+  }
 }

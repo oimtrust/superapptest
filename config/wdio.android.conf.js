@@ -1,6 +1,7 @@
 import { join } from "path";
-import { config as baseConfig } from "./wdio.shared.conf.js";
-import constant from "./constant.conf.js";
+import { config as baseConfig } from "./wdio.shared.conf";
+import constant from "./constant";
+
 
 baseConfig.capabilities = [
   {
@@ -12,8 +13,10 @@ baseConfig.capabilities = [
     "appium:orientation": "PORTRAIT",
     "appium:automationName": "UiAutomator2",
     // The path to the app
-    "appium:app": join(process.cwd(), `./apps/${constant.ANDROID_APP_FILE}`),
+    "appium:app": join(process.cwd(), `./app/${constant.ANDROID_APP_FILE}`),
     "appium:newCommandTimeout": 240,
+    "appium:appPackage": constant.ANDROID_APP_PACKAGE,
+    // "appium:appActivity": constant.ANDROID_APP_ACTIVITY,
   },
 ];
 
